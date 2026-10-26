@@ -36,7 +36,7 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 encoder = VGGEncoder('vgg_normalised.pth').to(device)
 decoder = Decoder().to(device)
 #decoder.load_state_dict(torch.load('G:\python\NeuroArt_AI'))
-decoder.load_state_dict(
+decoder.load_state_dict()
     import os
 import torch
 
