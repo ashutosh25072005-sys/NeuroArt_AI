@@ -5,3 +5,5 @@ Pillow
 numpy
 opencv-python-headless
 Flask
+Flask-WTF
+Flask-SQLAlchemy
