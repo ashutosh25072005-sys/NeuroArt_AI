@@ -6,4 +6,10 @@ numpy
 opencv-python-headless
 Flask
 Flask-WTF
-Flask-SQLAlchemy
+bootstrap-flask
+WTForms
+Werkzeug
+Jinja2
+itsdangerous
+click
+blinker
