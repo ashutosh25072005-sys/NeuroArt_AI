@@ -40,23 +40,15 @@ decoder.load_state_dict(
     torch.load(decoder_path, map_location=device)
 )
 
-
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-
-decoder_path = os.path.join(
-    BASE_DIR,
-    "experiment",
-    "trial2",
-    "decoder_2.pth"
-)
-
-decoder = torch.load(
-    decoder_path,
-    map_location="cpu"
-)
-
-encoder.eval()
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+encoder_path = os.path.join(BASE_DIR, "vgg_normalised.pth") 
+decoder_path = os.path.join( BASE_DIR, "experiment", "trial2", "decoder_2.pth" ) 
+encoder = VGGEncoder(encoder_path).to(device) 
+decoder = Decoder().to(device) decoder.load_state_dict( torch.load(decoder_path, map_location=device) )
+encoder.eval() 
 decoder.eval()
+
 
 def allowed_file(filename):
     return '.' in filename and \
