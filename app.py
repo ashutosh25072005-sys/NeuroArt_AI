@@ -37,7 +37,7 @@ encoder = VGGEncoder('vgg_normalised.pth').to(device)
 decoder = Decoder().to(device)
 #decoder.load_state_dict(torch.load('G:\python\NeuroArt_AI'))
 decoder.load_state_dict()
-    import os
+import os
 import torch
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
