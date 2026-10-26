@@ -1,0 +1,16 @@
+gitignore
+content_data/
+style_data/
+__pycache__/
+*.pyc
+.venv/
+env/
+.env
+.ipynb_checkpoints/
+static/uploads/WhatsApp_*
+
+
+
+static/uploads/
+
+experiment/trial2/optimizer_*.pth

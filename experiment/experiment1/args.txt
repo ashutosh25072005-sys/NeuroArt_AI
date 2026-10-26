@@ -1,0 +1,4 @@
+content_dir: G:\python\NeuroArt_AI\content_data
+style_dir: G:\python\NeuroArt_AI\style_data
+vgg: G:\python\NeuroArt_AI\vgg_normalised.pth
+experiment: experiment1
