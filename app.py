@@ -22,7 +22,6 @@ app.config['ALLOWED_EXTENSIONS'] = {'png', 'jpg', 'jpeg'}
 Bootstrap(app)
 
 os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
-
 class UploadForm(FlaskForm):
     content = FileField('Content Image')
     style = FileField('Style Image')
@@ -31,25 +30,23 @@ class UploadForm(FlaskForm):
     alpha = FloatField('Alpha', default=1.0)
     submit = SubmitField('Transfer Style')
 
-device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-
-encoder = VGGEncoder('vgg_normalised.pth').to(device)
-decoder = Decoder().to(device)
-#decoder.load_state_dict(torch.load('G:\python\NeuroArt_AI'))
-#decoder_path = os.path.join(BASE_DIR, "experiment", "trial2", "decoder_2.pth")
-
-decoder = Decoder().to(device)
-#decoder.load_state_dict(torch.load(decoder_path, map_location=device))
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-encoder_path = os.path.join(BASE_DIR, "vgg_normalised.pth") 
-decoder_path = os.path.join( BASE_DIR, "experiment", "trial2", "decoder_2.pth" ) 
-encoder = VGGEncoder(encoder_path).to(device) 
-decoder = Decoder().to(device) 
-decoder.load_state_dict( torch.load(decoder_path, map_location=device) 
-                       )
-encoder.eval() 
+
+encoder_path = os.path.join(BASE_DIR, "vgg_normalised.pth")
+decoder_path = os.path.join(
+    BASE_DIR, "experiment", "trial2", "decoder_2.pth"
+)
+
+encoder = VGGEncoder(encoder_path).to(device)
+decoder = Decoder().to(device)
+
+decoder.load_state_dict(
+    torch.load(decoder_path, map_location=device, weights_only=True)
+)
+
+encoder.eval()
 decoder.eval()
 
 
