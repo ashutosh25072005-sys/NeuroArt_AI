@@ -50,7 +50,6 @@ decoder.load_state_dict(
         mmap=True
     )
 )
-
 encoder.eval()
 decoder.eval()
 
