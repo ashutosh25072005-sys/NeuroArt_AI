@@ -36,9 +36,10 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 encoder = VGGEncoder('vgg_normalised.pth').to(device)
 decoder = Decoder().to(device)
 #decoder.load_state_dict(torch.load('G:\python\NeuroArt_AI'))
-decoder.load_state_dict(
-    torch.load(decoder_path, map_location=device)
-)
+decoder_path = os.path.join(BASE_DIR, "experiment", "trial2", "decoder_2.pth")
+
+decoder = Decoder().to(device)
+decoder.load_state_dict(torch.load(decoder_path, map_location=device))
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
