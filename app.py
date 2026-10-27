@@ -43,7 +43,12 @@ encoder = VGGEncoder(encoder_path).to(device)
 decoder = Decoder().to(device)
 
 decoder.load_state_dict(
-    torch.load(decoder_path, map_location=device, weights_only=True)
+    torch.load(
+        decoder_path,
+        map_location="cpu",
+        weights_only=True,
+        mmap=True
+    )
 )
 
 encoder.eval()
